@@ -3,12 +3,12 @@ import Category from "../models/Category.js";
 
 const router = express.Router();
 
-router.get("/category", async (req, res) => {
+router.delete("/category/:id", async (req, res) => {
   try {
-    const data = await Category.find();
+    const { id } = req.params;
+    const data = await Category.findByIdAndDelete(id);
     res.status(200).json({
-      categories: data,
-      message: "All categories successfully fetched",
+      message: "Single category successfully deleted",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

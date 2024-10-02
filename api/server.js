@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 import productCategoryRoute from "./routes/productCategory.js";
 import createCategoryRoute from "./routes/createCategory.js";
+import getSingleCategoryRoute from "./routes/getSingleCategory.js";
+import deleteSingleCategoryRoute from "./routes/deleteCategory.js";
+import updateCategoryRoute from "./routes/updateCategory.js";
 import connectDB from "./config/db.js";
 
 //init express
@@ -19,8 +22,14 @@ app.use(cors());
 app.use(express.static("api/public"));
 
 //routes
-app.use("/api/v1/product", productCategoryRoute, createCategoryRoute);
-//app.use("/api/v1/product", );
+app.use(
+  "/api/v1/product",
+  productCategoryRoute,
+  createCategoryRoute,
+  getSingleCategoryRoute,
+  deleteSingleCategoryRoute,
+  updateCategoryRoute
+);
 
 //listen
 app.listen(PORT, () => {

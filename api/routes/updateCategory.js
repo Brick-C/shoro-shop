@@ -1,20 +1,23 @@
 import express from "express";
 import Category from "../models/Category.js";
-import { productCategoryMulter } from "../utils/multer.js";
 
 const router = express.Router();
 
-router.post("/category", productCategoryMulter, async (req, res) => {
+router.put("/category/:id", async (req, res) => {
   try {
+    const { id } = req.params;
     const { name, slug } = req.body;
-    const data = await Category.create({
-      name,
-      slug,
-      photo: req.file.filename,
-    });
+    const data = await Category.findByIdAndUpdate(
+      id,
+      {
+        name,
+        slug,
+      },
+      { new: true }
+    );
     res.status(200).json({
       category: data,
-      message: "Categories successfully created",
+      message: "Categories successfully updated",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

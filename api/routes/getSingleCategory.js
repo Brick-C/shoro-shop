@@ -3,12 +3,13 @@ import Category from "../models/Category.js";
 
 const router = express.Router();
 
-router.get("/category", async (req, res) => {
+router.get("/category/:slug", async (req, res) => {
   try {
-    const data = await Category.find();
+    const { slug } = req.params;
+    const data = await Category.findOne({ slug });
     res.status(200).json({
-      categories: data,
-      message: "All categories successfully fetched",
+      category: data,
+      message: "Single category successfully fetched",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
