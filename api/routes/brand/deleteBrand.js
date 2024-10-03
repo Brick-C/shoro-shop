@@ -1,14 +1,14 @@
 import express from "express";
-import Category from "../models/Category.js";
+import Brand from "../../models/Brand.js";
 
 const router = express.Router();
 
-router.delete("/category/:id", async (req, res) => {
+router.delete("/brand/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const data = await Category.findByIdAndDelete(id);
+    const data = await Brand.findByIdAndDelete(id);
     res.status(200).json({
-      message: "Single category successfully deleted",
+      message: "Single brand successfully deleted",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

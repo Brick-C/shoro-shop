@@ -1,13 +1,13 @@
 import express from "express";
-import Category from "../models/Category.js";
+import Brand from "../../models/Brand.js";
 
 const router = express.Router();
 
-router.put("/category/:id", async (req, res) => {
+router.put("/brand/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { name, slug } = req.body;
-    const data = await Category.findByIdAndUpdate(
+    const data = await Brand.findByIdAndUpdate(
       id,
       {
         name,
@@ -17,7 +17,7 @@ router.put("/category/:id", async (req, res) => {
     );
     res.status(200).json({
       category: data,
-      message: "Categories successfully updated",
+      message: "Brand successfully updated",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

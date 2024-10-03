@@ -1,11 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import productCategoryRoute from "./routes/productCategory.js";
-import createCategoryRoute from "./routes/createCategory.js";
-import getSingleCategoryRoute from "./routes/getSingleCategory.js";
-import deleteSingleCategoryRoute from "./routes/deleteCategory.js";
-import updateCategoryRoute from "./routes/updateCategory.js";
+import productCategoryRoute from "./routes/category/productCategory.js";
+import createCategoryRoute from "./routes/category/createCategory.js";
+import getSingleCategoryRoute from "./routes/category/getSingleCategory.js";
+import deleteSingleCategoryRoute from "./routes/category/deleteCategory.js";
+import updateCategoryRoute from "./routes/category/updateCategory.js";
+import productBrandRoute from "./routes/brand/productBrand.js";
+import createBrandRoute from "./routes/brand/createBrand.js";
+import getSingleBrandRoute from "./routes/brand/getSingleBrand.js";
+import deleteBrandRoute from "./routes/brand/deleteBrand.js";
+import updateBrandRoute from "./routes/brand/updateBrand.js";
 import connectDB from "./config/db.js";
 
 //init express
@@ -24,11 +29,18 @@ app.use(express.static("api/public"));
 //routes
 app.use(
   "/api/v1/product",
+  //categoryRoute
   productCategoryRoute,
   createCategoryRoute,
   getSingleCategoryRoute,
   deleteSingleCategoryRoute,
-  updateCategoryRoute
+  updateCategoryRoute,
+  //brandRoute
+  productBrandRoute,
+  createBrandRoute,
+  getSingleBrandRoute,
+  deleteBrandRoute,
+  updateBrandRoute
 );
 
 //listen
