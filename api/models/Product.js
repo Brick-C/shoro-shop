@@ -47,7 +47,7 @@ const productSchema = mongoose.Schema(
       ref: "Tag",
     },
     brands: {
-      type: [mongoose.Schema.Types.ObjectId],
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Brand",
     },
     status: {

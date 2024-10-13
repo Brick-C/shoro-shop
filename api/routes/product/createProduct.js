@@ -17,6 +17,14 @@ router.post("/", productMulter, async (req, res) => {
       brands,
       tags,
     } = req.body;
+
+    //get photo name and gallery names
+    const photo = req.files["product-photo"][0].filename;
+    // const gallery = [];
+    // req.files["product-gallery-photo"].forEach((file) => {
+    //   gallery.push(file.filename);
+    // });
+
     const data = await Product.create({
       name,
       shortDesc,
@@ -24,12 +32,12 @@ router.post("/", productMulter, async (req, res) => {
       regPrice,
       salePrice,
       slug: createSlug(name),
-      //photo: req.file.filename,
+      photo,
+      //gallery,
     });
     res.status(200).json({
       category: data,
       message: "Product successfully created",
-      data: req.body,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
