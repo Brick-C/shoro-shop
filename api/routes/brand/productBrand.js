@@ -7,6 +7,7 @@ router.get("/brand", async (req, res) => {
   try {
     const data = await Brand.find();
     res.status(200).json({
+      brands: data,
       categories: data,
       message: "All brands successfully fetched",
     });

@@ -14,6 +14,7 @@ router.post("/brand", productBrandMulter, async (req, res) => {
       photo: req.file.filename,
     });
     res.status(200).json({
+      brand: data,
       category: data,
       message: "Brand successfully created",
     });
