@@ -13,6 +13,7 @@ import createBrandRoute from "./routes/brand/createBrand.js";
 import getSingleBrandRoute from "./routes/brand/getSingleBrand.js";
 import deleteBrandRoute from "./routes/brand/deleteBrand.js";
 import updateBrandRoute from "./routes/brand/updateBrand.js";
+import updateBrandStatusRoute from "./routes/brand/statusBrand.js";
 //tag
 import productTagRoute from "./routes/tag/productTag.js";
 import createTagRoute from "./routes/tag/createTag.js";
@@ -55,6 +56,7 @@ app.use(
   getSingleBrandRoute,
   deleteBrandRoute,
   updateBrandRoute,
+  updateBrandStatusRoute,
   //tagRoute
   productTagRoute,
   createTagRoute,
