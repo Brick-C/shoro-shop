@@ -7,14 +7,13 @@ const router = express.Router();
 
 router.post("/brand", productBrandMulter, async (req, res) => {
   try {
-    const { name, slug } = req.body;
+    const { name } = req.body;
     const data = await Brand.create({
       name,
       slug: createSlug(name),
       photo: req.file.filename,
     });
     res.status(200).json({
-      brand: data,
       category: data,
       message: "Brand successfully created",
     });

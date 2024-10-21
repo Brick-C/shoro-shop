@@ -1,17 +1,19 @@
 import express from "express";
 import Brand from "../../models/Brand.js";
-
+import { createSlug } from "../../utils/slugCreate.js";
+import { productBrandMulter } from "../../utils/multer.js";
 const router = express.Router();
 
-router.put("/brand/:id", async (req, res) => {
+router.patch("/brand/:id", productBrandMulter, async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, slug } = req.body;
+    const { name, photo } = req.body;
     const data = await Brand.findByIdAndUpdate(
       id,
       {
         name,
-        slug,
+        slug: createSlug(name),
+        photo: req.file?.filename ? req.file.filename : photo,
       },
       { new: true }
     );
